@@ -112,9 +112,13 @@
     import axios from "axios";
     import AddStaffUserForm from "../formComponents/AddStaffUserForm";
     import UserStaffUpdateModal from "../modals/UserStaffUpdateModal";
+    import unix_to_date_mixin from "../../mixins/unix_to_date_mixin";
 
     export default {
         name: "StaffTable",
+        mixins: [
+            unix_to_date_mixin,
+        ],
         components: {
             AddStaffUserForm,
         },
@@ -160,39 +164,26 @@
                     hasIcon: true,
                     onConfirm: function() {
                         let url = 'http://localhost:12345/auth/user/staff/'+id;
-                        console.log(url);
                         axios.delete(url).then(res => {
                             console.log(res.data)
                         })
-                        // axios({
-                        //     method: "DELETE",
-                        //     url: "http://localhost:12345/items/" + id,
-                        // }).then(res => {
-                        //     console.log(res.data);
-                        // });
-                        // this.$buefy.toast.open('Item deleted!');
                     }
                 })
             },
             findStaffUser(id) {
+                // find staff user object
                 let staffUser = this.staffUserData.find(user => user._id === id);
-                var date = new Date(staffUser.created_at * 1000);
-// Hours part from the timestamp
-                var hours = date.getHours();
-// Minutes part from the timestamp
-                var minutes = "0" + date.getMinutes();
-// Seconds part from the timestamp
-                var seconds = "0" + date.getSeconds();
 
-// Will display time in 10:30:23 format
-                var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+                // convert dates
+                let created_date = unix_to_date_mixin.computed.convertUnixToDate(staffUser.created_at);
+                let updated_date = unix_to_date_mixin.computed.convertUnixToDate(staffUser.updated_at);
 
-                console.log(formattedTime);
                 this.$buefy.dialog.alert({
                     title: staffUser.first_name + ' ' + staffUser.last_name,
                     message: 'Email: ' + staffUser.email + '<br>' +
                         'Is Admin: ' + staffUser.is_admin + '<br>' +
-                        'Created At: ' + formattedTime,
+                        'Created At: ' + created_date + '<br>' +
+                        'Updated At:' + updated_date,
                     confirmText: 'OK'
                 })
             },
