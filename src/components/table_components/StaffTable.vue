@@ -116,9 +116,6 @@
 
     export default {
         name: "StaffTable",
-        mixins: [
-            unix_to_date_mixin,
-        ],
         components: {
             AddStaffUserForm,
         },
