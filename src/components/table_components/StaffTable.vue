@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style= "margin: 25px 0 0 20px">
-            <h1 style="font-size: 30px">USERS' TABLE</h1>
+            <h1 style="font-size: 30px">STAFF USERS TABLE</h1>
         </div>
         <div class="dataTable">
             <button
@@ -116,9 +116,6 @@
 
     export default {
         name: "StaffTable",
-        mixins: [
-            unix_to_date_mixin,
-        ],
         components: {
             AddStaffUserForm,
         },
