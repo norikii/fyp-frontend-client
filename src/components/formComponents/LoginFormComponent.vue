@@ -5,22 +5,22 @@
                      :type="inputErrType"
                      :message="inputErrMsg">
                 <b-input  type="email"
-                         :value="emailInput"
+                         v-model="emailInput"
                          maxlength="50">
                 </b-input>
             </b-field>
 
-            <b-field label="Password"
-                     :type="inputErrType"
-                     :message="inputErrMsg">
-                <b-input @keyup="checkPassword" type="password"
-                         :value="passwordInput"
+            <b-field label="Password">
+                <b-input
+                         type="password"
+                         v-model="passwordInput"
+                         :placeholder="passwordInput"
                          password-reveal>
                 </b-input>
             </b-field>
 
             <div id="buttons">
-                <button  class="button is-info" style="align-self: start">Log In</button>
+                <button @click="login" class="button is-info" style="align-self: start">Log In</button>
                 <button  class="button is-danger" style="align-self: end">Cancel</button>
             </div>
 <!--            <b-notification-->
@@ -50,8 +50,17 @@
             success() {
 
             },
-            login: function () {
-
+            login() {
+                // dispatching a login action
+                this.$store.dispatch(
+                    'login', {
+                        // this payload will be sent
+                        email: this.emailInput,
+                        password: this.passwordInput
+                    }).then( () => {
+                        // then we redirect to the dashboard route
+                        this.$router.push({name: 'dashboard'})
+                })
             }
         },
         computed: {

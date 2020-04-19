@@ -41,7 +41,7 @@
                 Actions
             </p>
             <ul class="menu-list">
-                <li><a><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Log Out</a></li>
+                <li @click="logout"><a><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Log Out</a></li>
             </ul>
         </aside>
     </div>
@@ -61,10 +61,15 @@
             };
         },
         methods: {
-
+            logout() {
+                this.$store.dispatch('logout')
+            }
         },
         computed: {
-
+            // getName() {
+            //     this.userFirstName = this.$store.loginResponse.;
+            //     this.userLastName = ;
+            // }
         }
 
     }

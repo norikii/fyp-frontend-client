@@ -36,4 +36,7 @@ Installing bulma `npm install bulma --save`
 
 add @import "~bulma/css/bulma.css"; to the style section of the App.vue
 
+###JWT authentication / authorization
+
+
 
