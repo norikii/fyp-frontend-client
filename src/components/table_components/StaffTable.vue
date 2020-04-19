@@ -162,7 +162,8 @@
                     onConfirm: function() {
                         let url = 'http://localhost:12345/auth/user/staff/'+id;
                         axios.delete(url).then(res => {
-                            console.log(res.data)
+                            console.log(res.data);
+                            location.reload();
                         })
                     }
                 })
