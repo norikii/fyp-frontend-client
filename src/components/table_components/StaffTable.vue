@@ -154,9 +154,9 @@
             },
             removeStaffUser(id, email) {
                 this.$buefy.dialog.confirm({
-                    title: 'Deleting Item',
+                    title: 'Deleting User',
                     message: 'Are you sure you want to <b>delete</b> user: '+ email +'? This action cannot be undone.',
-                    confirmText: 'Delete Item',
+                    confirmText: 'Delete User',
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
