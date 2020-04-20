@@ -154,15 +154,16 @@
             },
             removeStaffUser(id, email) {
                 this.$buefy.dialog.confirm({
-                    title: 'Deleting Item',
+                    title: 'Deleting User',
                     message: 'Are you sure you want to <b>delete</b> user: '+ email +'? This action cannot be undone.',
-                    confirmText: 'Delete Item',
+                    confirmText: 'Delete User',
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
                         let url = 'http://localhost:12345/auth/user/staff/'+id;
                         axios.delete(url).then(res => {
-                            console.log(res.data)
+                            console.log(res.data);
+                            location.reload();
                         })
                     }
                 })

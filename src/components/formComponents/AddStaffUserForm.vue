@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div v-if="isControl" class="field is-grouped">
+        <div class="field is-grouped">
             <div class="control">
                 <button @click="addStaffUser" class="button is-link">Submit</button>
             </div>
@@ -61,7 +61,6 @@
         name: "AddStaffUserForm",
         props: [
             'staffUsers',
-            'isControl'
         ],
         data() {
             return {
@@ -69,19 +68,11 @@
                     first_name: this.staffUsers.first_name,
                     last_name: this.staffUsers.last_name,
                     email: this.staffUsers.email,
-                    password: this.staffUsers.password,
                     is_admin: this.staffUsers.is_admin,
-                }
+                },
             }
         },
         methods: {
-            // isStaffUser() {
-            //     if (this.staffUsers.is_admin || !this.staffUsers.is_admin) {
-            //         return this.staffUsers.is_admin
-            //     } else {
-            //         return false
-            //     }
-            // },
             addStaffUser() {
                 let formData = JSON.stringify(this.staffUserObject);
                 axios({
