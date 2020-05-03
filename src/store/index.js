@@ -32,13 +32,12 @@ export default new Vuex.Store({
     // login action
     login ({ commit }, credentials ) {
       let formData = JSON.stringify(credentials);
-      console.log(formData);
       return axios.post('http://localhost:12345/user/staff/login', formData)
                     // getting back data response back
                   .then(({ data}) => {
                     console.log(data);
                     // committing to this mutation with data parameter
-                    commit('SET_USER_DATA', data)
+                    commit('SET_USER_DATA', data.payload)
                   });
     },
 

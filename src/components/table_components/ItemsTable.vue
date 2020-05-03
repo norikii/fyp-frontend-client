@@ -26,6 +26,7 @@
                         :data="itemsData"
                         :paginated="isPaginated"
                         :per-page="perPage"
+                        striped
                         :current-page.sync="currentPage"
                         :pagination-simple="isPaginationSimple"
                         :pagination-position="paginationPosition"
@@ -126,7 +127,7 @@
         mounted() {
             axios.get('http://localhost:12345/auth/items').then(
                 response => {
-                    this.itemsData = response.data;
+                    this.itemsData = response.data.payload;
                 }
             );
         },

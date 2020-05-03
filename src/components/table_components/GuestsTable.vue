@@ -8,6 +8,7 @@
                     :data="guestUserData"
                     :paginated="isPaginated"
                     :per-page="perPage"
+                    striped
                     :current-page.sync="currentPage"
                     :pagination-simple="isPaginationSimple"
                     :pagination-position="paginationPosition"
@@ -65,7 +66,7 @@
         mounted() {
             axios.get('http://localhost:12345/auth/user/guest/all').then(
                 response => {
-                    this.guestUserData = response.data;
+                    this.guestUserData = response.data.payload;
                 }
             );
         },

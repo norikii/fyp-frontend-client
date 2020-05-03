@@ -34,6 +34,7 @@
                         :pagination-position="paginationPosition"
                         :default-sort-direction="defaultSortDirection"
                         :sort-icon="sortIcon"
+                        striped
                         :sort-icon-size="sortIconSize"
                         default-sort="user.first_name"
                         aria-next-label="Next page"
@@ -144,7 +145,7 @@
         mounted() {
             axios.get('http://localhost:12345/auth/user/staff/all').then(
                 response => {
-                    this.staffUserData = response.data;
+                    this.staffUserData = response.data.payload;
                 }
             );
         },

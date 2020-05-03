@@ -21,7 +21,9 @@
                     <option disabled value="">Select dropdown</option>
                     <option>Mains</option>
                     <option>Sides</option>
+                    <option>Soups</option>
                     <option>Drinks</option>
+                    <option>Alcohol</option>
                     <option>Deserts</option>
                 </select>
             </div>

@@ -2,7 +2,7 @@ export default {
     computed: {
         convertUnixToDate(unix) {
             if (unix == null) {
-                return 'Have not signed yet.';
+                return 'Not set yet.';
             }
 
             // converting to milliseconds
