@@ -57,8 +57,14 @@
                 userFirstName: 'John',
                 userLastName: 'Doe',
                 nameInitials: 'JD',
-                isActive: false
+                isActive: false,
             };
+        },
+
+        mounted() {
+            let user = this.$store.state.loginResponse.user;
+            this.userFirstName = user.first_name;
+            this.userLastName = user.last_name;
         },
         methods: {
             logout() {

@@ -51,7 +51,7 @@
 
                 axios({
                     method: "PUT",
-                    url: "http://localhost:12345/auth/order/"+this.toUpdateObject._id,
+                    url: "http://192.168.0.55:12345/auth/order/"+this.toUpdateObject._id,
                     data: orderData,
                 }).then(res => {
                     console.log(res.data);

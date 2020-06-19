@@ -143,7 +143,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/user/staff/all').then(
+            axios.get('http://192.168.0.55:12345/auth/user/staff/all').then(
                 response => {
                     this.staffUserData = response.data.payload;
                 }
@@ -161,7 +161,7 @@
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
-                        let url = 'http://localhost:12345/auth/user/staff/'+id;
+                        let url = 'http://192.168.0.55:12345/auth/user/staff/'+id;
                         axios.delete(url).then(res => {
                             console.log(res.data);
                             location.reload();

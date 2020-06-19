@@ -28,7 +28,7 @@
             }
         },
         created() {
-            axios.get('http://localhost:12345/auth/dashboard').then(({data}) => {
+            axios.get('http://192.168.0.55:12345/auth/dashboard').then(({data}) => {
                 this.isLoading = false;
             })
         },

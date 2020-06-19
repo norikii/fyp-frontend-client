@@ -89,7 +89,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/items').then(
+            axios.get('http://192.168.0.55:12345/auth/items').then(
                 response => this.itemsList = response.data
             );
             // this.gotUrl = this.itemsList[4].item_img
@@ -110,7 +110,7 @@
                 let formData = JSON.stringify(itemData);
                 axios({
                     method: "POST",
-                    url: "http://localhost:12345/item",
+                    url: "http://192.168.0.55:12345/item",
                     data: formData,
                 }).then(res => {
                     console.log(res.data);
@@ -129,32 +129,14 @@
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
-                        let url = 'http://localhost:12345/items/'+id;
+                        let url = 'http://192.168.0.55:12345/items/'+id;
                         console.log(url);
                         axios.delete(url).then(res => {
                             console.log(res.data)
                         })
-                        // axios({
-                        //     method: "DELETE",
-                        //     url: "http://localhost:12345/items/" + id,
-                        // }).then(res => {
-                        //     console.log(res.data);
-                        // });
-                        // this.$buefy.toast.open('Item deleted!');
                     }
                 })
-
-
-                // this.$buefy.toast.open({
-                //     message: 'Your item has been added!',
-                //     type: 'is-success'
-                // })
             },
-            // inputValidation(data) {
-            //     switch () {
-            //
-            //     }
-            // },
             getImg(image) {
                 return image;
             },

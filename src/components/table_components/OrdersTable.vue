@@ -83,9 +83,9 @@
                             </span>
                         </b-table-column>
 
-                        <b-table-column field="payed_at" label="Payed At" width="200" centered sortable searchable>
+                        <b-table-column field="delivered_at" label="User" width="300" centered sortable searchable>
                             <span class="tag is-success">
-                                {{ dateConverter(props.row.payed_at) }}
+                                {{ props.row.staff_user_id }}
                             </span>
                         </b-table-column>
 
@@ -168,7 +168,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/orders').then(
+            axios.get('http://192.168.0.55:12345/auth/orders').then(
                 response => {
                     this.ordersData = response.data.payload;
                 }
@@ -189,7 +189,7 @@
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
-                        let url = 'http://localhost:12345/auth/order/'+id;
+                        let url = 'http://192.168.0.55:12345/auth/order/'+id;
                         axios.delete(url).then(res => {
                             console.log(res.data);
                             location.reload();

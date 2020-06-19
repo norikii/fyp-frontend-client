@@ -105,7 +105,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/items').then(
+            axios.get('http://192.168.0.55:12345/auth/items').then(
                 response => {
                     this.itemsData = response.data.payload;
                 }

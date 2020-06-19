@@ -106,7 +106,7 @@
         methods: {
             convertPrepareTime(minutes) {
                 // return prepare time in milliseconds
-                return parseInt(minutes) * 60 * 1000;
+                return parseInt(minutes);
             },
             addItem() {
                 let ept = this.convertPrepareTime(this.prepareTime);
@@ -122,7 +122,7 @@
                 let formData = JSON.stringify(itemData);
                 axios({
                     method: "POST",
-                    url: "http://localhost:12345/auth/item",
+                    url: "http://192.168.0.55:12345/auth/item",
                     data: formData,
                 }).then(res => {
                     console.log(res.data);

@@ -59,7 +59,7 @@
             updateUser() {
                 axios({
                     method: "PUT",
-                    url: "http://localhost:12345/auth/user/staff/"+this.staffUserObject._id,
+                    url: "http://192.168.0.55:12345/auth/user/staff/"+this.staffUserObject._id,
                     data: this.staffUserObject,
                 }).then(res => {
                     console.log(res.data);

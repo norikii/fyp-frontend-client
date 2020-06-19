@@ -121,11 +121,11 @@
                 sortIcon: 'arrow-up',
                 sortIconSize: 'is-small',
                 currentPage: 1,
-                perPage: 5,
+                perPage: 10,
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/items').then(
+            axios.get('http://192.168.0.55:12345/auth/items').then(
                 response => {
                     this.itemsData = response.data.payload;
                 }
@@ -143,7 +143,7 @@
                     type: 'is-danger',
                     hasIcon: true,
                     onConfirm: function() {
-                        let url = 'http://localhost:12345/auth/item/'+id;
+                        let url = 'http://192.168.0.55:12345/auth/item/'+id;
                         axios.delete(url).then(res => {
                             console.log(res.data);
                             location.reload();
@@ -168,6 +168,7 @@
                         '<div>Img: <img :src="'+ item.item_img +'"></div>' +
                         'Name: ' + item.item_name + '<br>' +
                         'Description: ' + item.item_description + '<br>' +
+                        'EPT: ' + item.estimate_prepare_time + '<br>' +
                         'Type: ' + item.item_type + '<br>' +
                         'Price: ' + item.item_price + '<br>' +
                         'Created At: ' + created_date + '<br>' +

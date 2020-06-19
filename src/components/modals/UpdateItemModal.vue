@@ -91,16 +91,16 @@
 
     export default {
         name: "UpdateItemModal",
+        props: [
+            'itemObject'
+        ],
         data() {
             return {
                 selectedFile: null,
                 filename: 'No file is selected ...',
-                imageUrl: '',
+                imageUrl: this.itemObject.item_img,
             }
         },
-        props: [
-            'itemObject'
-        ],
         methods: {
             updateItem() {
                 let ept = this.convertPrepareTime(this.itemObject.estimate_prepare_time);
@@ -112,7 +112,7 @@
                 console.log(this.itemObject);
                 axios({
                     method: "PUT",
-                    url: "http://localhost:12345/auth/item/"+this.itemObject._id,
+                    url: "http://192.168.0.55:12345/auth/item/"+this.itemObject._id,
                     data: this.itemObject,
                 }).then(res => {
                     console.log(res.data);
@@ -126,7 +126,7 @@
 
             convertPrepareTime(minutes) {
                 // return prepare time in milliseconds
-                return parseInt(minutes) * 60 * 1000;
+                return parseInt(minutes);
             },
 
             // selects picture
