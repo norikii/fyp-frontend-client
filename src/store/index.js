@@ -32,13 +32,12 @@ export default new Vuex.Store({
     // login action
     login ({ commit }, credentials ) {
       let formData = JSON.stringify(credentials);
-      console.log(formData);
-      return axios.post('http://localhost:12345/user/staff/login', formData)
+      return axios.post('http://192.168.0.55:12345/user/staff/login', formData)
                     // getting back data response back
                   .then(({ data}) => {
-                    console.log(data);
+                    // console.log(data);
                     // committing to this mutation with data parameter
-                    commit('SET_USER_DATA', data)
+                    commit('SET_USER_DATA', data.payload)
                   });
     },
 
@@ -47,8 +46,10 @@ export default new Vuex.Store({
       commit('CLEAR_USER_DATA')
     }
   },
+
   modules: {
   },
+
   getters: {
     loggedIn (state) {
       // this will return truthiness or falseness of the value we enter before !!

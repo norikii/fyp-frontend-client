@@ -77,7 +77,7 @@
                 let formData = JSON.stringify(this.staffUserObject);
                 axios({
                     method: "POST",
-                    url: "http://localhost:12345/user/staff/register",
+                    url: "http://192.168.0.55:12345/user/staff/register",
                     data: formData,
                 }).then(res => {
                     console.log(res.data);

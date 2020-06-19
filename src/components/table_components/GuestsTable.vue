@@ -8,6 +8,7 @@
                     :data="guestUserData"
                     :paginated="isPaginated"
                     :per-page="perPage"
+                    striped
                     :current-page.sync="currentPage"
                     :pagination-simple="isPaginationSimple"
                     :pagination-position="paginationPosition"
@@ -22,6 +23,12 @@
                 <template slot-scope="props">
                     <b-table-column field="email" label="Email" width="100" sortable searchable>
                         {{ props.row.email }}
+                    </b-table-column>
+
+                    <b-table-column field="delivered_at" label="Last Login" width="200"  sortable searchable>
+                            <span class="tag is-success">
+                                {{ dateConverter(props.row.logged_at) }}
+                            </span>
                     </b-table-column>
 
                     <b-table-column label="Actions" width="40">
@@ -59,13 +66,14 @@
                 sortIcon: 'arrow-up',
                 sortIconSize: 'is-small',
                 currentPage: 1,
-                perPage: 5
+                perPage: 5,
+                dateConverter: unix_to_date_mixin.computed.convertUnixToDate,
             }
         },
         mounted() {
-            axios.get('http://localhost:12345/auth/user/guest/all').then(
+            axios.get('http://192.168.0.55:12345/auth/user/guest/all').then(
                 response => {
-                    this.guestUserData = response.data;
+                    this.guestUserData = response.data.payload;
                 }
             );
         },
